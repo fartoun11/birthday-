@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For You ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top, #26121c 0%, #0d080b 38%, #000 75%);
+            color: white;
+            font-family: "Poppins", Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           MOVING HEARTS
+        ========================= */
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -60px;
+            color: #ff5c9a;
+            opacity: 0;
+            filter: drop-shadow(0 0 8px rgba(255, 92, 154, 0.7));
+
+            animation-name: floatHeart;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes floatHeart {
+
+            0% {
+                transform:
+                    translateY(0)
+                    translateX(0)
+                    rotate(0deg)
+                    scale(0.8);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.65;
+            }
+
+            50% {
+                transform:
+                    translateY(-55vh)
+                    translateX(25px)
+                    rotate(180deg)
+                    scale(1);
+            }
+
+            100% {
+                transform:
+                    translateY(-115vh)
+                    translateX(-30px)
+                    rotate(360deg)
+                    scale(0.8);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page {
+            position: relative;
+            z-index: 2;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 70px 20px;
+        }
+
+
+        /* =========================
+           MESSAGE CARD
+        ========================= */
+
+        .message-card {
+
+            width: 100%;
+            max-width: 850px;
+
+            padding: 55px 55px 60px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.055),
+                    rgba(255,255,255,0.018)
+                );
+
+            border: 1px solid rgba(255, 92, 154, 0.22);
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 0 80px rgba(255, 92, 154, 0.08),
+                inset 0 0 35px rgba(255,255,255,0.015);
+
+            backdrop-filter: blur(12px);
+
+            animation: cardAppear 1.5s ease;
+        }
+
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+
+        /* =========================
+           TOP HEART
+        ========================= */
+
+        .top-heart {
+            text-align: center;
+
+            font-size: 38px;
+
+            color: #ff5c9a;
+
+            margin-bottom: 18px;
+
+            filter:
+                drop-shadow(
+                    0 0 15px
+                    rgba(255, 92, 154, 0.65)
+                );
+
+            animation: heartbeat 2s infinite;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        .title {
+
+            text-align: center;
+
+            font-size: 34px;
+
+            font-weight: 400;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+        }
+
+        .title span {
+            color: #ff6fa7;
+        }
+
+
+        .small-line {
+
+            width: 60px;
+            height: 1px;
+
+            background: #ff5c9a;
+
+            margin: 22px auto 35px;
+
+            box-shadow:
+                0 0 10px
+                rgba(255, 92, 154, 0.7);
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        .message {
+
+            color: #e9e9e9;
+
+            font-size: 16px;
+
+            line-height: 2;
+
+            font-weight: 300;
+
+            letter-spacing: 0.15px;
+        }
+
+
+        .message p {
+
+            margin-bottom: 24px;
+        }
+
+
+        .message .highlight {
+
+            color: #ff8ab7;
+
+            font-weight: 400;
+        }
+
+
+        /* =========================
+           FINAL HEART
+        ========================= */
+
+        .final-heart {
+
+            text-align: center;
+
+            font-size: 32px;
+
+            color: #ff5c9a;
+
+            margin-top: 35px;
+
+            filter:
+                drop-shadow(
+                    0 0 12px
+                    rgba(255, 92, 154, 0.65)
+                );
+        }
+
+
+        .signature {
+
+            text-align: center;
+
+            color: #999;
+
+            margin-top: 18px;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .page {
+                padding: 35px 15px;
+            }
+
+            .message-card {
+                padding: 40px 25px 45px;
+                border-radius: 22px;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .top-heart {
+                font-size: 32px;
+            }
+
+            .message {
+                font-size: 15px;
+                line-height: 1.9;
+            }
+        }
+
+
+        @media (max-width: 420px) {
+
+            .message-card {
+                padding: 32px 20px 38px;
+            }
+
+            .title {
+                font-size: 25px;
+            }
+
+            .message {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         MOVING HEARTS
+    ========================= -->
+
+    <div class="hearts" id="hearts"></div>
+
+
+    <!-- =========================
+         PAGE
+    ========================= -->
+
+    <main class="page">
+
+        <section class="message-card">
+
+
+            <div class="top-heart">
+                ♥
+            </div>
+
+
+            <h1 class="title">
+                Happy Birthday, <span>my love</span> ❤️
+            </h1>
+
+
+            <div class="small-line"></div>
+
+
+            <div class="message">
+
+
+                <p>
+                    happeeey birthdayyy ❤️
+                </p>
+
+
+                <p>
+                    nheb n9olk eli ena farhan barcha eli lyoum howa nharek,
+                    w nheb lyoum hedha ykoun nhar mميز barcha بالنسبة ليك،
+                    5ater enti تستاهل كل حاجة حلوة في الدنيا.
+                </p>
+
+
+                <p>
+                    s7i7 ena ma na3refch dima kifeh n3abber 3la elli fi 9albi،
+                    w ma na3refch dima n9oul elli n7ess bih،
+                    ama nheb n9olk eli enti personne spéciale barcha 3andi،
+                    w وجودك في حياتي عندو معنى كبير برشا.
+                </p>
+
+
+                <p>
+                    men nhar elli d5alt l7yeti،
+                    wallit fama barcha 7ajet sghar ya3mlou far9 كبير عندي.
+                    conversation sghira m3ak،
+                    dh7ka،
+                    message،
+                    wala hata wa9t sghir n9adhih m3ak،
+                    kolhom 3andhom blasa m5asssa fi 9albi.
+                </p>
+
+
+                <p>
+                    n7eb fik barcha details،
+                    n7eb tari9et klemek،
+                    n7eb dh7aktik،
+                    n7eb presence mte3ek،
+                    w n7eb barcha 7ajet يمكن enti ma ta3tihomch importance،
+                    ama ena na3tihom importance kbira 5aterhom منك enti.
+                </p>
+
+
+                <p>
+                    w يمكن ساعات ena ma nbayenlekch kol chay،
+                    ama rahou fama barcha 7ajet fi 9albi ma na3refch kifh n9oulhom.
+                    fama barcha كلام نحب نقولهولك،
+                    ama ساعات الكلام وحدو ما يكفيش باش يوصف قداش شخص ينجم يعنيلي.
+                </p>
+
+
+                <p>
+                    ntemna men 9albi eli l3am hedha ykoun a7la 3am 3andek،
+                    fih barcha far7a،
+                    barcha dh7ak،
+                    barcha moments behyin،
+                    w surtout تحقق فيه كل حاجة تتمنّاها.
+                </p>
+
+
+                <p>
+                    ntemna dima teb9a tebtesem،
+                    w ken fama nhar ldenya t3abtek،
+                    nhebik tetfaker eli fama chkoun y7eb ychoufek fer7ana،
+                    y7eb yfar7ek،
+                    w y7eb ykoun سبب في ابتسامتك حتى كان بحاجة صغيرة.
+                </p>
+
+
+                <p>
+                    w nheb n9olk merci...
+                    merci 3la kol moment،
+                    kol dh7ka،
+                    kol conversation،
+                    kol souvenir،
+                    w kol haja 7lowa 3malneha m3a ba3dhna.
+                </p>
+
+
+                <p>
+                    el website hedha lkol 3maltou 5ater nheb n3amllek حاجة
+                    تبقى عندك،
+                    حاجة كل ما ترجع تشوفها تتفكر نهارك،
+                    وتتذكر قداش فما شخص كان يحب يعملك حاجة مختلفة،
+                    حاجة معمولة مخصوص على خاطرك.
+                </p>
+
+
+                <p>
+                    يمكن اللي عملتو بسيط،
+                    ama كل تفصيلة فيه عملتها و ena n5amem fik،
+                    men awal page lel page hedhi،
+                    w kol étape 5allitha توصلك لهنا.
+                </p>
+
+
+                <p>
+                    w ken bech nكون صريح معاك،
+                    ma nعرفش chnowa bech ysir fel mosta9bel،
+                    ama nعرف eli les moments elli 3icht'hom m3ak
+                    mahomch مجرد moments عاديين بالنسبة ليا.
+                    kol wa9t 3aditou m3ak عندو قيمة،
+                    w kol souvenir عندو blasa fi 9albi.
+                </p>
+
+
+                <p>
+                    w mazelnا 3anna barcha 7ajet n3ichouhom،
+                    barcha dh7ak،
+                    barcha sorties،
+                    barcha conversations،
+                    w barcha souvenirs jdod mazelnا ma 3malnehomch.
+                </p>
+
+
+                <p>
+                    donc fi nharek hedha،
+                    nheb n9olk حاجة وحدة برك...
+                    <span class="highlight">
+                        enti تستاهل تكون فرحانة، تستاهل الحب، وتستاهل كل حاجة حلوة.
+                    </span>
+                </p>
+
+
+                <p>
+                    nchallah rabi y3tik sa7a،
+                    yfar7ek،
+                    y7a99e9lek elli fi mokhek،
+                    w ykhalik dima tebtesem.
+                </p>
+
+
+                <p>
+                    w nchallah kol birthday jey يكون أحلى من اللي قبلو،
+                    w كل عام تلقى روحك محاطة بالناس اللي يحبوك
+                    والناس اللي يتمنولك الخير.
+                </p>
+
+
+                <p>
+                    w بالنسبة ليا...
+                    nhebik ta3ref eli enti عندك blasa m5asssa 3andi،
+                    w مهما حاولت نكتب ولا نحكي،
+                    ديما باش يبقى فما كلام أكثر ما قلتوش.
+                </p>
+
+
+                <p>
+                    so...
+                    <span class="highlight">
+                        Happy Birthday مرة أخرى ❤️
+                    </span>
+                </p>
+
+
+                <p>
+                    ntemna ki kammalt lmessage hedhi تكون ابتسمت،
+                    5ater hedhi كانت أهم حاجة نحب نوصلها ليك.
+                </p>
+
+
+                <p>
+                    w ken lwebsite hedha وصل لآخر page...
+                    rahou موش معناها الحكاية وفات،
+                    بالعكس...
+                    <span class="highlight">
+                        mazelnا ma ktebnech a7la les pages ❤️
+                    </span>
+                </p>
+
+
+            </div>
+
+
+            <div class="final-heart">
+                ♥
+            </div>
+
+
+            <div class="signature">
+                made with love ❤️
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        const heartsContainer =
+            document.getElementById("hearts");
+
+
+        const symbols = [
+            "♥",
+            "♡",
+            "❤",
+            "💕"
+        ];
+
+
+        for (let i = 0; i < 40; i++) {
+
+            const heart =
+                document.createElement("div");
+
+
+            heart.className = "heart";
+
+
+            heart.innerHTML =
+                symbols[
+                    Math.floor(
+                        Math.random() * symbols.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+
+            heart.style.fontSize =
+                (12 + Math.random() * 25) + "px";
+
+
+            heart.style.animationDuration =
+                (8 + Math.random() * 10) + "s";
+
+
+            heart.style.animationDelay =
+                Math.random() * 10 + "s";
+
+
+            heartsContainer.appendChild(heart);
+
+        }
+
+    </script>
+
+
+</body>
+</html>
